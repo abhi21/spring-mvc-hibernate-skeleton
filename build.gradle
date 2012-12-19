@@ -63,3 +63,10 @@ task selenium(type: Test, dependsOn: jettyDaemon) {
 	testClassesDir = sourceSets.selenium.output.classesDir
 	classpath = sourceSets.selenium.runtimeClasspath
 }
+
+[jettyStop]*.stopPort = 8080
+[jettyStop]*.stopKey = 'stopKey'
+
+selenium.doLast {
+    jettyStop.execute()
+}
